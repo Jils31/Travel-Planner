@@ -91,6 +91,7 @@ const WeatherApp = {
         WeatherUI.elements.searchInput?.addEventListener('keypress', async (e) => {
             if (e.key === 'Enter') {
                 await this.updateWeather();
+                document.getElementById('search-weather').value = ""
             }
         });
     },
