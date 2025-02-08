@@ -1,0 +1,1600 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="description" content="{{project.meta.ogDescription}}">
+      <meta name="theme-color" content="#ffffff">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="robots" content="{{project.meta.robotsMeta}}">
+      
+       <title>Travel Planner</title>
+      <!-- SEO Description -->
+      <meta name="description" content="{{project.seoDescription}}">
+      <!-- Performance optimization: Preload critical resources -->
+      <link rel="stylesheet" href="style.css">
+      <link rel="preload" href="https://cdn.tailwindcss.com" as="script">
+      <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" as="style">
+      
+      <!-- {headerScripts} -->
+
+      <!-- Core CSS -->
+      <script src="https://cdn.tailwindcss.com"></script>
+      <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+             colors: {
+                primary: {
+                  50: '#f8f8f8',
+                  100: '#e8e8e8',
+                  200: '#d3d3d3',
+                  300: '#a3a3a3',
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+                secondary: {
+                  50: '#f8f8f8',
+                  100: '#e8e8e8',
+                  200: '#d3d3d3',
+                  300: '#a3a3a3',
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+                accent: {
+                  50: '#f8f8f8',
+                  100: '#e8e8e8',
+                  200: '#d3d3d3',
+                  300: '#a3a3a3',
+                  400: '#737373',
+                  500: '#525252',
+                  600: '#404040',
+                  700: '#262626',
+                  800: '#171717',
+                  900: '#0a0a0a',
+                  950: '#030303',
+                },
+              },
+              fontFamily: {
+                sans: ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+                heading: ['Montserrat', 'Inter', 'system-ui', 'sans-serif'],
+              },
+              spacing: {
+                '18': '4.5rem',
+                '22': '5.5rem',
+                '30': '7.5rem',
+              },
+              maxWidth: {
+                '8xl': '88rem',
+                '9xl': '96rem',
+              },
+              animation: {
+                'fade-in': 'fadeIn 0.5s ease-in',
+                'fade-out': 'fadeOut 0.5s ease-out',
+                'slide-up': 'slideUp 0.5s ease-out',
+                'slide-down': 'slideDown 0.5s ease-out',
+                'slide-left': 'slideLeft 0.5s ease-out',
+                'slide-right': 'slideRight 0.5s ease-out',
+                'scale-in': 'scaleIn 0.5s ease-out',
+                'scale-out': 'scaleOut 0.5s ease-out',
+                'spin-slow': 'spin 3s linear infinite',
+                'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                'bounce-slow': 'bounce 3s infinite',
+                'float': 'float 3s ease-in-out infinite',
+              },
+              keyframes: {
+                fadeIn: {
+                  '0%': { opacity: '0' },
+                  '100%': { opacity: '1' },
+                },
+                fadeOut: {
+                  '0%': { opacity: '1' },
+                  '100%': { opacity: '0' },
+                },
+                slideUp: {
+                  '0%': { transform: 'translateY(20px)', opacity: '0' },
+                  '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                slideDown: {
+                  '0%': { transform: 'translateY(-20px)', opacity: '0' },
+                  '100%': { transform: 'translateY(0)', opacity: '1' },
+                },
+                slideLeft: {
+                  '0%': { transform: 'translateX(20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                slideRight: {
+                  '0%': { transform: 'translateX(-20px)', opacity: '0' },
+                  '100%': { transform: 'translateX(0)', opacity: '1' },
+                },
+                scaleIn: {
+                  '0%': { transform: 'scale(0.9)', opacity: '0' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                },
+                scaleOut: {
+                  '0%': { transform: 'scale(1.1)', opacity: '0' },
+                  '100%': { transform: 'scale(1)', opacity: '1' },
+                },
+                float: {
+                  '0%, 100%': { transform: 'translateY(0)' },
+                  '50%': { transform: 'translateY(-10px)' },
+                },
+              },
+              aspectRatio: {
+                'portrait': '3/4',
+                'landscape': '4/3',
+                'ultrawide': '21/9',
+              },
+            },
+          },
+          variants: {
+            extend: {
+              opacity: ['disabled'],
+              cursor: ['disabled'],
+              backgroundColor: ['active', 'disabled'],
+              textColor: ['active', 'disabled'],
+            },
+          },
+        }
+      </script>
+
+      <!-- Utilities and Components -->
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.min.js"></script>
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.45.1/apexcharts.min.js"></script>
+      
+      <!-- Optimized Font Loading -->
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+      
+      <!-- Icons -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" 
+            integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+            crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+      <!-- Dynamic Meta Tags -->
+      <meta name="description" content="{{project.meta.ogDescription}}">
+      <meta name="keywords" content="{{project.meta.keywords}}">
+      <meta name="robots" content="{{project.meta.robotsMeta}}">
+      <meta name="google-site-verification" content="{{project.meta.googleVerification}}">
+      <meta name="baidu-verification" content="{{project.meta.baiduVerification}}">
+      <meta name="yandex-verification" content="{{project.meta.yandexVerification}}">
+      <meta name="bing-verification" content="{{project.meta.bingVerification}}">
+      <meta property="og:title" content="{{project.meta.ogTitle}}">
+      <meta property="og:description" content="{{project.meta.ogDescription}}">
+      <meta property="og:image" content="{{project.meta.ogImage}}">
+      <meta property="og:type" content="website">
+      <meta property="og:locale" content="en_US">
+      <meta property="og:site_name" content="{{project.name}}">
+      <meta name="twitter:card" content="summary_large_image">
+      <meta name="twitter:title" content="{{project.meta.ogTitle}}">
+      <meta name="twitter:description" content="{{project.meta.ogDescription}}">
+      <meta name="twitter:image" content="{{project.meta.ogImage}}">
+
+      <!-- Base Styles -->
+      <style>
+      * {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* Webkit browsers like Chrome, Safari, newer Edge */
+*::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+}
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+          width: 0px;
+        }
+        
+        ::-webkit-scrollbar-track {
+          background: #f1f1f1;
+          border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+          background: #888;
+          border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+          background: #666;
+        }
+
+        /* Remove tap highlight on mobile */
+        * {
+          -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Improve text rendering */
+        body {
+          text-rendering: optimizeLegibility;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Focus outline styles */
+        :focus-visible {
+          outline: 2px solid currentColor;
+          outline-offset: 2px;
+        }
+
+        /* Print styles */
+        @media print {
+          .no-print {
+            display: none !important;
+          }
+          
+          a[href]:after {
+            content: " (" attr(href) ")";
+          }
+        }
+      </style>
+
+      <!-- Enhanced Image Handler -->
+      <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+              if (entry.isIntersecting) {
+                const img = entry.target;
+                if (img.dataset.src) {
+                  const tempImage = new Image();
+                  tempImage.onload = () => {
+                    img.src = img.dataset.src;
+                    img.classList.remove('opacity-0');
+                    img.classList.add('opacity-100');
+                  };
+                  tempImage.src = img.dataset.src;
+                  img.removeAttribute('data-src');
+                  observer.unobserve(img);
+                }
+              }
+            });
+          }, {
+            rootMargin: '50px 0px',
+            threshold: 0.01
+          });
+
+          const loadImage = (img) => {
+            if ('loading' in HTMLImageElement.prototype) {
+              img.loading = 'lazy';
+            }
+            
+            img.classList.add('transition-opacity', 'duration-300', 'opacity-0');
+            
+            img.onerror = () => {
+              const width = img.getAttribute('width') || img.clientWidth || 300;
+              const height = img.getAttribute('height') || img.clientHeight || 200;
+              img.src = `https://placehold.co/${width}x${height}/DEDEDE/555555?text=Image+Unavailable`;
+              img.alt = 'Image unavailable';
+              img.classList.remove('opacity-0');
+              img.classList.add('opacity-100', 'error-image');
+            };
+
+            if (img.dataset.src) {
+              imageObserver.observe(img);
+            } else {
+              img.classList.remove('opacity-0');
+              img.classList.add('opacity-100');
+            }
+          };
+
+          document.querySelectorAll('img[data-src], img:not([data-src])').forEach(loadImage);
+
+          // Watch for dynamically added images
+          new MutationObserver((mutations) => {
+            mutations.forEach(mutation => {
+              mutation.addedNodes.forEach(node => {
+                if (node.nodeType === 1) {
+                  if (node.tagName === 'IMG') {
+                    loadImage(node);
+                  }
+                  node.querySelectorAll('img').forEach(loadImage);
+                }
+              });
+            });
+          }).observe(document.body, {
+            childList: true,
+            subtree: true
+          });
+        });
+
+        // Performance monitoring
+        if ('performance' in window && 'PerformanceObserver' in window) {
+          // Create performance observer
+          const observer = new PerformanceObserver((list) => {
+            const entries = list.getEntries();
+            entries.forEach((entry) => {
+              if (entry.entryType === 'largest-contentful-paint') {
+                // console.log(`LCP: ${entry.startTime}ms`);
+              }
+              if (entry.entryType === 'first-input') {
+                // console.log(`FID: ${entry.processingStart - entry.startTime}ms`);
+              }
+              if (entry.entryType === 'layout-shift') {
+                // console.log(`CLS: ${entry.value}`);
+              }
+            });
+          });
+
+          // Observe performance metrics
+          observer.observe({ entryTypes: ['largest-contentful-paint', 'first-input', 'layout-shift'] });
+
+          // Log basic performance metrics
+          window.addEventListener('load', () => {
+            const timing = performance.getEntriesByType('navigation')[0];
+            console.log({
+              'DNS Lookup': timing.domainLookupEnd - timing.domainLookupStart,
+              'TCP Connection': timing.connectEnd - timing.connectStart,
+              'DOM Content Loaded': timing.domContentLoadedEventEnd - timing.navigationStart,
+              'Page Load': timing.loadEventEnd - timing.navigationStart
+            });
+          });
+        }
+
+        // Handle offline/online status
+        window.addEventListener('online', () => {
+          document.body.classList.remove('offline');
+          console.log('Connection restored');
+        });
+        
+        window.addEventListener('offline', () => {
+          document.body.classList.add('offline');
+          console.log('Connection lost');
+        });
+      </script>
+   </head>
+   <body class="antialiased text-gray-800 min-h-screen flex flex-col">
+      <!-- Skip to main content link for accessibility -->
+      <a href="#main-content" 
+         class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:p-4 focus:bg-white focus:text-black">
+         Skip to main content
+      </a>
+
+      <!-- Header -->
+      <header class="relative z-50 bg-white dark:bg-gray-900">
+        <!-- Header content goes here -->
+      </header>
+
+      <!-- Main content area -->
+      <main id="main-content" class="flex-1 relative ">
+        <!-- Content will be injected here -->
+      </main>
+
+      <!-- {bodyScripts} -->
+      
+
+   </body>
+</html><element id="9d160932-66ee-4082-b932-5bdb44eb7d92" data-section-id="9d160932-66ee-4082-b932-5bdb44eb7d92">
+
+<htmlCode>
+<div id="root">
+  <nav id="navbar" class="fixed w-full z-50 bg-black backdrop-blur-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between items-center h-16">
+        <!-- Logo -->
+        <div class="flex-shrink-0">
+          <a href="#hero" class="text-white font-bold text-xl tracking-wider">TravelPlanner</a>
+        </div>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex space-x-8">
+          <a href="#features" class="text-gray-300 hover:text-white transition-colors">Features</a>
+          <a href="#itineraryBuilder" class="text-gray-300 hover:text-white transition-colors">Itinerary</a>
+          <a href="#destinations" class="text-gray-300 hover:text-white transition-colors">Destinations</a>
+          <a href="#weatherUpdates" class="text-gray-300 hover:text-white transition-colors">Weather</a>
+       </div>
+
+        <!-- Mobile Menu Button -->
+        <div class="md:hidden">
+          <button id="mobile-menu-button" class="text-gray-300 hover:text-white">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-neutral-900/95 backdrop-blur-sm animate__animated animate__fadeIn">
+      <div class="px-2 pt-2 pb-3 space-y-1">
+        <a href="#features" class="block px-3 py-2 text-gray-300 hover:text-white">Features</a>
+        <a href="#itineraryBuilder" class="block px-3 py-2 text-gray-300 hover:text-white">Itinerary</a>
+        <a href="#destinations" class="block px-3 py-2 text-gray-300 hover:text-white">Destinations</a>
+        <a href="#weatherUpdates" class="block px-3 py-2 text-gray-300 hover:text-white">Weather</a>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
+
+    // Close mobile menu when clicking on a link
+    const mobileLinks = mobileMenu.getElementsByTagName('a');
+    for (const link of mobileLinks) {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    }
+
+    // Hide/show navbar on scroll
+    let lastScroll = 0;
+    const navbar = document.getElementById('navbar');
+    
+    window.addEventListener('scroll', () => {
+      const currentScroll = window.pageYOffset;
+      if (currentScroll <= 0) {
+        navbar.classList.remove('-translate-y-full');
+        return;
+      }
+      
+      if (currentScroll > lastScroll && !navbar.classList.contains('-translate-y-full')) {
+        navbar.classList.add('-translate-y-full');
+      } else if (currentScroll < lastScroll && navbar.classList.contains('-translate-y-full')) {
+        navbar.classList.remove('-translate-y-full');
+      }
+      lastScroll = currentScroll;
+    });
+  </script>
+</div>
+</htmlCode></element><element id="36cd83f2-cdd5-4eef-8fab-9bc93add1467" data-section-id="36cd83f2-cdd5-4eef-8fab-9bc93add1467">
+
+<htmlCode>
+<div id="root">
+  <section id="hero" class="relative min-h-screen bg-black overflow-hidden">
+    <!-- Animated Background -->
+    <div class="absolute inset-0">
+
+      <img 
+      src="images/bg1.jpg"
+      alt="Background"
+      class="absolute w-full h-full object-cover object-center">
+    />
+    
+      
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(67,56,202,0.12),transparent_50%)]"></div>
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,rgba(168,85,247,0.12),transparent_50%)]"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent"></div>
+    </div>
+  
+    <!-- Main Content -->
+    <div class="relative max-w-8xl mx-auto px-4 sm:px-6 lg:px-8 h-screen">
+      <div class="h-full flex flex-col lg:flex-row items-center justify-center lg:justify-between gap-12 pt-20 lg:pt-0">
+        
+        <!-- Left Content -->
+        <div class="w-full lg:w-5/12 space-y-8 text-center lg:text-left">
+          <!-- Experience Badge -->
+          <div class="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-2 backdrop-blur-sm">
+            <span class="relative flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+            </span>
+            <span class="text-sm text-emerald-400 font-medium">Start Your Adventure Today</span>
+          </div>
+  
+          <!-- Main Heading -->
+          <div class="space-y-4">
+            <h1 class="text-4xl lg:text-6xl font-bold text-white leading-tight">
+              Discover the World's 
+              <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500">
+                Hidden Gems
+              </span>
+            </h1>
+            <p class="text-gray-400 text-lg lg:text-xl max-w-lg mx-auto lg:mx-0">
+              From pristine beaches to mountain peaks, create your perfect journey with personalized travel experiences.
+            </p>
+          </div>
+  
+          <!-- Travel Features -->
+         
+  
+          <!-- Search Box -->
+          <div class="relative max-w-xl mx-auto lg:mx-0">
+            <div class="flex items-center bg-white/5 border border-white/10 rounded-2xl p-2 backdrop-blur-sm">
+              <div class="flex-1 flex items-center gap-4 px-4">
+                <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+                <input id="mapsearch" type="text" 
+                       placeholder="Where would you like to explore?" 
+                       class="w-full bg-transparent text-white placeholder-gray-400 focus:outline-none"
+                       class="mapsearch">
+              </div>
+              <button id="search-button"class="bg-gradient-to-r from-blue-500 to-green-500 text-white px-6 py-3 rounded-xl font-medium hover:shadow-lg  transition-all duration-300">
+                <a href="#map">Explore Now</a>
+              </button>
+            </div>
+          </div>
+
+   
+  
+          <!-- Travel Types - Hidden on mobile, visible from md breakpoint and up -->
+          <div class="hidden md:flex flex-wrap gap-3">
+              <span class="px-4 py-2 rounded-full bg-white/5 text-gray-300 text-sm hover:bg-white/10 cursor-pointer transition-all">
+                🏖️ Beach Getaways
+              </span>
+              <span class="px-4 py-2 rounded-full bg-white/5 text-gray-300 text-sm hover:bg-white/10 cursor-pointer transition-all">
+                 🏔️ Mountain Escapes
+              </span>
+              <span class="px-4 py-2 rounded-full bg-white/5 text-gray-300 text-sm hover:bg-white/10 cursor-pointer transition-all">
+                  🏛️ Cultural Tours
+              </span>
+  
+          </div>
+        </div>
+        <!-- Right Content - Floating Cards -->
+        <div class="w-full lg:w-5/12 relative mt-10">
+          <div class="grid grid-cols-2 gap-4 animate-float">
+            <!-- Destination Cards -->
+            <div class="space-y-4">
+              <!-- Card 1 -->
+              <div class="group relative rounded-2xl overflow-hidden hover:-translate-y-2 transition-all duration-300">
+                <img src="images/santorini.jpg" 
+                     alt="Santorini" 
+                     class="w-full aspect-[4/3] object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div class="absolute bottom-4 left-4">
+                    <h3 class="text-white font-semibold">Santorini</h3>
+                    <p class="text-gray-300 text-sm">Greece</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Card 2 -->
+              <div class="group relative rounded-2xl overflow-hidden translate-x-8 hover:-translate-y-2 transition-all duration-300 right-9">
+                <img src="images/bali.webp" 
+                     alt="Bali" 
+                     class="w-full aspect-[4/5] object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div class="absolute bottom-4 left-4">
+                    <h3 class="text-white font-semibold">Bali</h3>
+                    <p class="text-gray-300 text-sm">Indonesia</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="space-y-4 -translate-y-8">
+              <!-- Card 3 -->
+              <div class="group relative rounded-2xl overflow-hidden hover:-translate-y-2 transition-all duration-300">
+                <img src="images/maldives.webp" 
+                     alt="Maldives" 
+                     class="w-full aspect-[4/5] object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div class="absolute bottom-4 left-4">
+                    <h3 class="text-white font-semibold">Maldives</h3>
+                    <p class="text-gray-300 text-sm">South Asia</p>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Card 4 -->
+              <div class="group relative rounded-2xl overflow-hidden -translate-x-8 hover:-translate-y-2 transition-all duration-300 left-7">
+                <img src="images/alps.jpg" 
+                     alt="Swiss Alps" 
+                     class="w-full aspect-[4/3] object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div class="absolute bottom-4 left-4">
+                    <h3 class="text-white font-semibold">Swiss Alps</h3>
+                    <p class="text-gray-300 text-sm">Switzerland</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <!-- Floating Elements -->
+          <div class="absolute -top-8 -right-8 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl"></div>
+          <div class="absolute -bottom-8 -left-8 w-64 h-64 bg-fuchsia-500/10 rounded-full blur-3xl"></div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+  <style>
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  </style>
+</div>
+</htmlCode></element><element id="ac94b675-85ee-4622-886e-3f23768084c5" data-section-id="ac94b675-85ee-4622-886e-3f23768084c5">
+
+<htmlCode>
+<div id="root">
+  <section id="features" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-20">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate__animated animate__fadeIn">
+          Powerful Features for Seamless Travel Planning
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto animate__animated animate__fadeIn">
+          Everything you need to plan, track, and enjoy your journey - all in one place
+        </p>
+      </div>
+
+      <!-- Features Grid -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="bg-neutral-50 rounded-xl p-6 hover:shadow-xl transition-all duration-300 animate__animated animate__fadeInUp">
+          <div class="bg-blue-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Real-time Updates</h3>
+          <p class="text-gray-600">Instant notifications about flight changes, weather updates, and local events at your destination.</p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-neutral-50 rounded-xl p-6 hover:shadow-xl transition-all duration-300 animate__animated animate__fadeInUp animate__delay-1s">
+          <div class="bg-purple-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Drag & Drop Builder</h3>
+          <p class="text-gray-600">Intuitive drag-and-drop interface to create and customize your perfect travel itinerary.</p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-neutral-50 rounded-xl p-6 hover:shadow-xl transition-all duration-300 animate__animated animate__fadeInUp animate__delay-2s">
+          <div class="bg-green-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Smart Maps Integration</h3>
+          <p class="text-gray-600">Interactive maps with route optimization and nearby points of interest.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="bg-neutral-50 rounded-xl p-6 hover:shadow-xl transition-all duration-300 animate__animated animate__fadeInUp">
+          <div class="bg-red-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Weather Forecasts</h3>
+          <p class="text-gray-600">Accurate weather predictions to help you pack and plan activities accordingly.</p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="bg-neutral-50 rounded-xl p-6 hover:shadow-xl transition-all duration-300 animate__animated animate__fadeInUp animate__delay-1s">
+          <div class="bg-yellow-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-yellow-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Smart Booking</h3>
+          <p class="text-gray-600">Automated flight and hotel booking suggestions based on your preferences.</p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="bg-neutral-50 rounded-xl p-6 hover:shadow-xl transition-all duration-300 animate__animated animate__fadeInUp animate__delay-2s">
+          <div class="bg-indigo-100 w-12 h-12 rounded-lg flex items-center justify-center mb-4">
+            <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-gray-900 mb-2">Smart Filters</h3>
+          <p class="text-gray-600">Customize your search with advanced filters for activities and attractions.</p>
+        </div>
+      </div>
+
+      <!-- Feature Call-to-Action -->
+      <div class="mt-16 text-center">
+        <button class="px-8 py-4 bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-lg font-semibold hover:opacity-90 transition-all animate__animated animate__pulse animate__infinite animate__slower">
+          Explore All Features
+        </button>
+      </div>
+    </div>
+  </section>
+</div>
+</htmlCode></element><element id="f580937f-11cb-46a5-a04f-3d747543828a" data-section-id="f580937f-11cb-46a5-a04f-3d747543828a">
+
+<htmlCode>
+<div id="root">
+  <section id="itineraryBuilder" class="py-24 bg-neutral-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 animate__animated animate__fadeIn">
+          Build Your Perfect Itinerary
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto animate__animated animate__fadeIn">
+          Drag and drop activities, manage schedules, and organize your dream trip with our intuitive builder
+        </p>
+      </div>
+
+      <!-- Interactive Builder Demo -->
+      <div class="grid lg:grid-cols-2 gap-8">
+        <!-- Search Bar - Full Width Above Grid -->
+        <div class="lg:col-span-2 mb-6">
+          <div class="relative">
+            <input 
+              type="text" 
+              id="search" 
+              placeholder="Search city..." 
+              class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+            >
+            <svg class="w-5 h-5 text-gray-400 absolute right-4 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </div>
+        </div>
+      
+        <!-- Left Side - Activity Pool -->
+        <div class="bg-neutral-800 p-6 rounded-xl border border-neutral-700">
+          <h3 class="text-white font-semibold mb-4">Available Activities</h3>
+          <div id="activity-pool" class="space-y-3">
+            <!-- Your existing activity items -->
+          </div>
+        </div>
+      
+        <!-- Right Side - Schedule Builder -->
+        <div class="bg-neutral-800 p-6 rounded-xl border border-neutral-700">
+          <h3 class="text-white font-semibold mb-4">Your Itinerary</h3>
+          <div id="itinerary-timeline" class="space-y-4">
+            <!-- Your existing timeline items -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="mt-8 flex justify-center gap-4">
+        <button class="px-6 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors">
+          Save Itinerary
+        </button>
+        <button class="px-6 py-3 bg-neutral-700 hover:bg-neutral-600 text-white rounded-lg transition-colors">
+          Clear All
+        </button>
+      </div>
+    </div>
+  </section>
+
+ 
+</div>
+</htmlCode></element><element id="2d148865-3fe6-4809-bcc1-e50fcf431468" data-section-id="2d148865-3fe6-4809-bcc1-e50fcf431468">
+
+<htmlCode>
+<div id="root">
+  <section id="destinations" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4 animate__animated animate__fadeIn">
+          Popular Destinations
+        </h2>
+        <p class="text-gray-600 max-w-2xl mx-auto animate__animated animate__fadeIn">
+          Explore trending destinations with real-time updates and local insights
+        </p>
+      </div>
+
+      <!-- Destination Cards Carousel -->
+      <div class="relative">
+        <div id="destinations-carousel" class="flex space-x-6 overflow-x-hidden">
+          <!-- Destination Card 1 -->
+          <div class="min-w-[300px] bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 animate__animated animate__fadeInRight">
+            <div class="relative h-48 rounded-t-xl overflow-hidden">
+              <img 
+                src="images/seine-in-paris.webp" 
+                alt="Paris"
+                class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+              >
+              <div class="absolute bottom-30 left-4">
+                <h3 class="text-white text-xl font-bold">Paris, France</h3>
+                <div class="flex items-center space-x-2">
+                  <span class="text-white/90">4.8</span>
+                  <div class="flex text-yellow-400">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-gray-600">Best time: June-Aug</span>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                  <span class="text-gray-600">22°C - Mostly Sunny</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span class="text-gray-600">250+ Attractions</span>
+                </div>
+              </div>
+              <button onclick="openModal('paris')" class="w-full mt-6 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                Explore Now
+              </button>
+            </div>
+          </div>
+
+          <!-- Destination Card 2 -->
+          <div class="min-w-[300px] bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 animate__animated animate__fadeInRight animate__delay-1s">
+            <div class="relative h-48 rounded-t-xl overflow-hidden">
+              <img 
+                src="images/asakusa-tokyo.webp" 
+                alt="Tokyo"
+                class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+              >              
+              <div class="absolute bottom-30 left-4">
+                <h3 class="text-white text-xl font-bold">Tokyo, Japan</h3>
+                <div class="flex items-center space-x-2">
+                  <span class="text-white/90">4.9</span>
+                  <div class="flex text-yellow-400">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-gray-600">Best time: Mar-May</span>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                  <span class="text-gray-600">20°C - Clear</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span class="text-gray-600">300+ Attractions</span>
+                </div>
+              </div>
+              <button onclick="openModal('tokyo')" class="w-full mt-6 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                Explore Now
+              </button>
+            </div>
+          </div>
+
+          <!-- Destination Card 3 -->
+          <div class="min-w-[300px] bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 animate__animated animate__fadeInRight">
+            <div class="relative h-48 rounded-t-xl overflow-hidden">
+              <img 
+                src="images/dubai1.webp" 
+                alt="Dubai"
+                class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+              >              
+              <div class="absolute bottom-30 left-4">
+                <h3 class="text-white text-xl font-bold">Dubai, UAE</h3>
+                <div class="flex items-center space-x-2">
+                  <span class="text-white/90">4.7</span>
+                  <div class="flex text-yellow-400">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-gray-600">Best time: Oct-Dec</span>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                  <span class="text-gray-600">22°C - Clear</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span class="text-gray-600">500+ Attractions</span>
+                </div>
+              </div>
+              <button onclick="openModal('dubai')" class="w-full mt-6 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                Explore Now
+              </button>
+            </div>
+          </div>
+
+          <!--Destination Card 4-->
+          <div class="min-w-[300px] bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 animate__animated animate__fadeInRight animate__delay-1s">
+            <div class="relative h-48 rounded-t-xl overflow-hidden">
+              <img 
+                src="images/vancouver.webp" 
+                alt="Vancouver"
+                class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+              >             
+               <div class="absolute bottom-30 left-4">
+                <h3 class="text-white text-xl font-bold">Vancouver, Canada</h3>
+                <div class="flex items-center space-x-2">
+                  <span class="text-white/90">4.5</span>
+                  <div class="flex text-yellow-400">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-gray-600">Best time: Feb-May</span>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                  <span class="text-gray-600">10°C - Snow</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span class="text-gray-600">350+ Attractions</span>
+                </div>
+              </div>
+              <button onclick="openModal('vancouver')" class="w-full mt-6 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                Explore Now
+              </button>
+            </div>
+          </div>
+
+          <!--Destination Card 5-->
+
+          <div class="min-w-[300px] bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 animate__animated animate__fadeInRight">
+            <div class="relative h-48 rounded-t-xl overflow-hidden">
+              <img 
+                src="images/zermatt.webp" 
+                alt="Zermatt"
+                class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+              >             
+               <div class="absolute bottom-30 left-4">
+                <h3 class="text-white text-xl font-bold">Zermatt, Switzerland</h3>
+                <div class="flex items-center space-x-2">
+                  <span class="text-white/90">4.8</span>
+                  <div class="flex text-yellow-400">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-gray-600">Best time: Sep-Nov</span>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                  <span class="text-gray-600">15°C - Clear</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span class="text-gray-600">600+ Attractions</span>
+                </div>
+              </div>
+              <button onclick="openModal('zermatt')" class="w-full mt-6 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                Explore Now
+              </button>
+            </div>
+          </div>
+          <!--Destination Card 6-->
+          <div class="min-w-[300px] bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 animate__animated animate__fadeInRight">
+            <div class="relative h-48 rounded-t-xl overflow-hidden">
+              <img 
+                src="images/maldives.webp" 
+                alt="Maldives"
+                class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+              >             
+               <div class="absolute bottom-30 left-4">
+                <h3 class="text-white text-xl font-bold">Maldives, South Asia</h3>
+                <div class="flex items-center space-x-2">
+                  <span class="text-white/90">4.8</span>
+                  <div class="flex text-yellow-400">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-gray-600">Best time: Dec-Mar</span>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                  <span class="text-gray-600">25°C - Clear</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span class="text-gray-600">700+ Attractions</span>
+                </div>
+              </div>
+              <button onclick="openModal('maldives')" class="w-full mt-6 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                Explore Now
+              </button>
+            </div>
+          </div>
+          <!--Destination Card 7-->
+          <div class="min-w-[300px] bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 animate__animated animate__fadeInRight">
+            <div class="relative h-48 rounded-t-xl overflow-hidden">
+              <img 
+                src="images/bali.webp" 
+                alt="Bali"
+                class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+              >             
+               <div class="absolute bottom-30 left-4">
+                <h3 class="text-white text-xl font-bold">Bali, Indonesia</h3>
+                <div class="flex items-center space-x-2">
+                  <span class="text-white/90">4.6</span>
+                  <div class="flex text-yellow-400">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-gray-600">Best time: Sep-Dec</span>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                  <span class="text-gray-600">25°C - Clear</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span class="text-gray-600">400+ Attractions</span>
+                </div>
+              </div>
+              <button onclick="openModal('bali')" class="w-full mt-6 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                Explore Now
+              </button>
+            </div>
+          </div>
+          <!--Destination Card 8-->
+          <div class="min-w-[300px] bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 animate__animated animate__fadeInRight">
+            <div class="relative h-48 rounded-t-xl overflow-hidden">
+              <img 
+                src="images/santorini.jpg" 
+                alt="Santorini"
+                class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+              >             
+               <div class="absolute bottom-30 left-4">
+                <h3 class="text-white text-xl font-bold">Santorini, Greece</h3>
+                <div class="flex items-center space-x-2">
+                  <span class="text-white/90">4.9</span>
+                  <div class="flex text-yellow-400">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-gray-600">Best time: Apr-Oct</span>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                  <span class="text-gray-600">15°C - Clear</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span class="text-gray-600">1000+ Attractions</span>
+                </div>
+              </div>
+              <button onclick="openModal('santorini')" class="w-full mt-6 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                Explore Now
+              </button>
+            </div>
+          </div>
+          <!--Destination Card 9-->
+          <div class="min-w-[300px] bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 animate__animated animate__fadeInRight">
+            <div class="relative h-48 rounded-t-xl overflow-hidden">
+              <img 
+                src="images/edinburgh.webp" 
+                alt="Edinburgh"
+                class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+              >             
+               <div class="absolute bottom-30 left-4">
+                <h3 class="text-white text-xl font-bold">Edinburgh, Scotland</h3>
+                <div class="flex items-center space-x-2">
+                  <span class="text-white/90">4.8</span>
+                  <div class="flex text-yellow-400">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-gray-600">Best time: May-Sep</span>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                  <span class="text-gray-600">10°C - Clear</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span class="text-gray-600">800+ Attractions</span>
+                </div>
+              </div>
+              <button onclick="openModal('edinburgh')" class="w-full mt-6 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                Explore Now
+              </button>
+            </div>
+          </div>
+          <!--Destination Card 10-->
+          <div class="min-w-[300px] bg-white rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 animate__animated animate__fadeInRight">
+            <div class="relative h-48 rounded-t-xl overflow-hidden">
+              <img 
+                src="images/italy.jpg" 
+                alt="Italy"
+                class="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
+              >             
+               <div class="absolute bottom-30 left-4">
+                <h3 class="text-white text-xl font-bold">Italy, Europe</h3>
+                <div class="flex items-center space-x-2">
+                  <span class="text-white/90">4.6</span>
+                  <div class="flex text-yellow-400">
+                    ★★★★★
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <span class="text-gray-600">Best time: Jan-Apr</span>
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
+                  </svg>
+                  <span class="text-gray-600">16°C - Clear</span>
+                </div>
+                <div class="flex items-center space-x-2">
+                  <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                  <span class="text-gray-600">700+ Attractions</span>
+                </div>
+              </div>
+              <button onclick="openModal('italy')" class="w-full mt-6 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
+                Explore Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button id="prev-btn" class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100">
+          <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+        <button id="next-btn" class="absolute top-1/2 -right-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100">
+          <svg class="w-6 h-6 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    <script>
+      const carousel = document.getElementById('destinations-carousel');
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+      let scrollAmount = 0;
+
+      nextBtn.addEventListener('click', () => {
+        scrollAmount += 320;
+        if (scrollAmount > carousel.scrollWidth - carousel.clientWidth) {
+          scrollAmount = 0;
+        }
+        carousel.scrollTo({
+          left: scrollAmount,
+          behavior: 'smooth'
+        });
+      });
+
+      prevBtn.addEventListener('click', () => {
+        scrollAmount -= 320;
+        if (scrollAmount < 0) {
+          scrollAmount = carousel.scrollWidth - carousel.clientWidth;
+        }
+        carousel.scrollTo({
+          left: scrollAmount,
+          behavior: 'smooth'
+        });
+      });
+    </script>
+  </section>
+    </div>
+
+  <!-- Image Modal -->
+<div id="imageModal" class="fixed inset-0 z-50 hidden bg-black bg-opacity-75 flex items-center justify-center p-4">
+  <div class="bg-white dark:bg-neutral-800 rounded-xl max-w-2xl w-full mx-auto overflow-hidden animate__animated animate__fadeIn">
+    <div class="p-3 border-b border-gray-200 dark:border-neutral-700 flex justify-between items-center">
+      <h3 class="text-lg font-bold text-gray-900 dark:text-white" id="modalTitle">Destination Images</h3>
+        <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    <div class="p-4">
+      <div id="modalImages" class="grid grid-cols-5 gap-3">
+          <!-- Images will be inserted here -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div id="loadingSpinner" class="hidden fixed inset-0 z-50 bg-black bg-opacity-75 flex items-center justify-center">
+  <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+  </div>
+
+</htmlCode></element><element id="589498a5-71a3-41d8-a1d7-965dc1ce7cd8" data-section-id="589498a5-71a3-41d8-a1d7-965dc1ce7cd8">
+
+<htmlCode>
+<div id="root">
+  <section id="weatherUpdates" class="py-24 bg-neutral-900">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-4 animate__animated animate__fadeIn">
+          Real-Time Weather Updates
+        </h2>
+        <p class="text-gray-400 max-w-2xl mx-auto animate__animated animate__fadeIn">
+          Stay informed about weather conditions at your destinations
+        </p>
+      </div>
+
+      <!-- Weather Dashboard -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Current Weather Card -->
+        <div class="col-span-1 lg:col-span-2 bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-xl rounded-3xl p-8 border border-neutral-800 animate__animated animate__fadeInLeft">
+          <!-- Search Bar -->
+          <div class="mb-6">
+            <div class="relative">
+              <input 
+                type="text" 
+                id="search-weather" 
+                placeholder="Search city..." 
+                class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-gray-400 focus:outline-none focus:border-blue-500"
+              >
+              <svg class="w-5 h-5 text-gray-400 absolute right-4 top-1/2 transform -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Weather Info -->
+          <div class="space-y-6">
+            <!-- City and Temperature -->
+            <div class="flex justify-between items-start">
+              <div>
+                <h2 id="cityname" class="text-3xl font-bold text-white mb-1">Loading...</h2>
+                <p id="longdescription" class="text-gray-300">Fetching weather...</p>
+              </div>
+              <div class="text-right">
+                <div id="finaltemp" class="text-5xl font-bold text-white">--°C</div>
+                <p id="d" class="text-gray-300">--</p>
+              </div>
+            </div>
+
+            <!-- Weather Details Grid -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="bg-white/10 p-4 rounded-xl">
+                <p class="text-gray-400 text-sm mb-1">Feels Like</p>
+                <p id="feelslike" class="text-white font-semibold">--°C</p>
+              </div>
+              <div class="bg-white/10 p-4 rounded-xl">
+                <p class="text-gray-400 text-sm mb-1">Humidity</p>
+                <p id="humidity" class="text-white font-semibold">--%</p>
+              </div>
+              <div class="bg-white/10 p-4 rounded-xl">
+                <p class="text-gray-400 text-sm mb-1">Min Temperature</p>
+                <p id="mintemp" class="text-white font-semibold">--°C</p>
+              </div>
+              <div class="bg-white/10 p-4 rounded-xl">
+                <p class="text-gray-400 text-sm mb-1">Max Temperature</p>
+                <p id="maxtemp" class="text-white font-semibold">--°C</p>
+              </div>
+              <div class="bg-white/10 p-4 rounded-xl col-span-2">
+                <p class="text-gray-400 text-sm mb-1">Wind Speed</p>
+                <p id="wind" class="text-white font-semibold">-- m/s</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Weather Recommendations Card -->
+        <div class="col-span-1 bg-gradient-to-br from-purple-500/20 to-blue-500/20 backdrop-blur-xl rounded-3xl p-8 border border-neutral-800 animate__animated animate__fadeInRight">
+          <h3 class="text-2xl font-bold text-white mb-6">Weather-Based Destinations</h3>
+          
+          <div class="space-y-4">
+            <!-- Sunny Weather -->
+            <div class="bg-white/10 p-4 rounded-xl hover:bg-white/20 transition-all cursor-pointer group">
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="text-white font-semibold">Dubai, UAE</h4>
+                <div class="text-yellow-400">☀️</div>
+          </div>
+              <p class="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">Sunny beaches and modern luxury</p>
+            </div>
+
+            <!-- Cool Weather -->
+            <div class="bg-white/10 p-4 rounded-xl hover:bg-white/20 transition-all cursor-pointer group">
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="text-white font-semibold">Vancouver, Canada</h4>
+                <div class="text-blue-400">🌥️</div>
+              </div>
+              <p class="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">Mild summers and scenic landscapes</p>
+            </div>
+
+            <!-- Snowy Weather -->
+            <div class="bg-white/10 p-4 rounded-xl hover:bg-white/20 transition-all cursor-pointer group">
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="text-white font-semibold">Zermatt, Switzerland</h4>
+                <div class="text-white">❄️</div>
+              </div>
+              <p class="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">Snow-covered peaks and skiing resorts</p>
+            </div>
+
+            <!-- Spring Weather -->
+            <div class="bg-white/10 p-4 rounded-xl hover:bg-white/20 transition-all cursor-pointer group">
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="text-white font-semibold">Kyoto, Japan</h4>
+                <div class="text-pink-400">🌸</div>
+              </div>
+              <p class="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">Cherry blossoms and traditional temples</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+</htmlCode></element><element id="81bbb696-08ba-4c19-a8e1-f59751abe99f" data-section-id="81bbb696-08ba-4c19-a8e1-f59751abe99f">
+
+  <htmlCode>
+    <section id="maps-routes" class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Section Header -->
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-black mb-4">
+            Interactive Travel Routes
+          </h2>
+          <p class="text-gray-1000 max-w-2xl mx-auto">
+            Plan your journey with detailed routes, points of interest, and real-time navigation assistance
+          </p>
+        </div>
+    
+        <!-- Maps and Route Details Container -->
+        <div class="flex gap-6">
+          <!-- Maps Container - 2/3 width -->
+          <div class="flex-grow w-2/3">
+            <div id="error-message" class="error">Failed to load map. Please try again.</div>
+            <div id="map" class="h-[600px] rounded-2xl"></div>
+          </div>
+
+          <div class="w-1/3">
+            <div class="bg-black backdrop-blur-sm rounded-2xl p-6 h-[600px] overflow-y-auto">
+              <!-- Search Section -->
+              <div class="mb-6">
+                <h3 class="text-xl font-semibold text-white mb-4">Explore Places</h3>
+               
+              </div>
+          
+              <!-- Results Container -->
+              <div id="searchResults" class="space-y-4">
+                <!-- Popular Destinations Section -->
+                <div class="mb-6">
+                  <h4 class="text-white font-semibold mb-4">Popular Destinations</h4>
+                  <div class="grid gap-3">
+                    <!-- Popular cities with click functionality -->
+                    <div onclick="document.getElementById('mapsearch').value='New York'; document.getElementById('search-button').click();" 
+                         class="bg-white/10 p-4 rounded-xl hover:bg-white/20 transition-all cursor-pointer">
+                      <div class="flex justify-between items-center">
+                        <div>
+                          <h5 class="text-white font-medium">New York, USA</h5>
+                          <p class="text-gray-400 text-sm">🗽 The City That Never Sleeps</p>
+                        </div>
+                       
+                      </div>
+                    </div>
+
+                    <div onclick="document.getElementById('mapsearch').value='Paris'; document.getElementById('search-button').click();" 
+                         class="bg-white/10 p-4 rounded-xl hover:bg-white/20 transition-all cursor-pointer">
+                      <div class="flex justify-between items-center">
+                        <div>
+                          <h5 class="text-white font-medium">Paris, France</h5>
+                          <p class="text-gray-400 text-sm">🗼 City of Love</p>
+                        </div>
+                       
+                      </div>
+                    </div>
+
+                    <div onclick="document.getElementById('mapsearch').value='Tokyo'; document.getElementById('search-button').click();" 
+                         class="bg-white/10 p-4 rounded-xl hover:bg-white/20 transition-all cursor-pointer">
+                      <div class="flex justify-between items-center">
+                        <div>
+                          <h5 class="text-white font-medium">Tokyo, Japan</h5>
+                          <p class="text-gray-400 text-sm">🗼 Modern Meets Traditional</p>
+                        </div>
+                        
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Popular Categories Section -->
+                <div class="mb-6">
+                  <h4 class="text-white font-semibold mb-4">Explore by Category</h4>
+                  <div class="grid grid-cols-2 gap-3">
+                    <button onclick="searchByCategory('tourism.sights')" 
+                            class="p-3 bg-white/10 rounded-lg text-white hover:bg-white/20 transition-all text-left">
+                      🎯 Tourist Spots
+                    </button>
+                    <button onclick="searchByCategory('catering.restaurant')" 
+                            class="p-3 bg-white/10 rounded-lg text-white hover:bg-white/20 transition-all text-left">
+                      🍽️ Restaurants
+                    </button>
+                    <button onclick="searchByCategory('accommodation.hotel')" 
+                            class="p-3 bg-white/10 rounded-lg text-white hover:bg-white/20 transition-all text-left">
+                      🏨 Hotels
+                    </button>
+                    <button onclick="searchByCategory('entertainment')" 
+                            class="p-3 bg-white/10 rounded-lg text-white hover:bg-white/20 transition-all text-left">
+                      🎭 Entertainment
+                    </button>
+                  </div>
+                  <h2 class="text-gray-400 text-sm mt-2">Working on the above things something real is coming soon...</h2>
+                </div>         
+              </div>
+            </div>
+
+
+          </div>
+
+        
+      </div>
+    </section>
+  </htmlCode>
+
+            <div id="page_complete">
+            
+              <script src="maps.js"></script>
+              <script  src="fetchplaces.js"></script>
+              <script  src="destination.js"></script>
+              <script  src="weatherupdate.js"></script>
+            <script>
+                console.log('Page complete');
+            </script>
+            </body>
+            </html>
+          
+    

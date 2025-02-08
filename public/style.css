@@ -1,0 +1,52 @@
+.searchbar{
+    width: 30vw;
+    padding: 0.5rem;
+    border-radius: 2rem;
+    color: white;
+    background-color: #1e1e1e;
+}
+
+.description, .temperature{
+    color: white;
+}
+
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.search-container {
+    margin-bottom: 20px;
+}
+
+
+
+#search-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#search-button:hover {
+    background-color: #45a049;
+}
+
+#map {
+    height: 600px;
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.error {
+    color: red;
+    margin-top: 10px;
+    display: none;
+}
+
+
