@@ -1,7 +1,7 @@
 const destinations = {
   paris: {
       title: 'Paris, France',
-      keywords: 'paris france eiffel tower louvre notre dame champs elysées arc de triomphe montmartre sacré coeur seine river versailles latin quarter musée d'
+      keywords: 'paris france eiffel tower louvre notre dame champs elysées arc de triomphe montmartre sacré coeur seine river'
   },
   tokyo: {
       title: 'Tokyo, Japan',
