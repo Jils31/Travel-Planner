@@ -382,8 +382,7 @@
 
 <htmlCode>
 <div id="root">
-  <nav id="navbar" class="fixed w-full z-50 bg-black backdrop-blur-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  <nav id="navbar" class="fixed left-1/2 transform -translate-x-1/2 top-4 w-11/12 max-w-5xl z-50 bg-black/80 backdrop-blur-sm rounded-2xl border border-white/10 shadow-lg shadow-black/20">    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between items-center h-16">
         <!-- Logo -->
         <div class="flex-shrink-0">
@@ -392,13 +391,27 @@
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex space-x-8">
-          <a href="#features" class="text-gray-300 hover:text-white transition-colors">Features</a>
-          <a href="#itineraryBuilder" class="text-gray-300 hover:text-white transition-colors">Itinerary</a>
-          <a href="#destinations" class="text-gray-300 hover:text-white transition-colors">Destinations</a>
-          <a href="#weatherUpdates" class="text-gray-300 hover:text-white transition-colors">Weather</a>
+          <a href="#features" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300 relative group">
+              <span>Features</span>
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-green-500 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#itineraryBuilder" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300 relative group">
+            <span>Itinerary</span>
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-green-500 group-hover:w-full transition-all duration-300"></span>
+          </a>
+          <a href="#destinations" 
+          class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300 relative group">
+            <span>Destinations</span>
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-green-500 group-hover:w-full transition-all duration-300"></span>
+         </a>
+          <a href="#weatherUpdates" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-white/5 transition-all duration-300 relative group">
+            <span>Weather</span>
+            <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-blue-500 to-green-500 group-hover:w-full transition-all duration-300"></span>
+          </a>
        </div>
 
         <!-- Mobile Menu Button -->
+
         <div class="md:hidden">
           <button id="mobile-menu-button" class="text-gray-300 hover:text-white">
             <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -549,7 +562,7 @@
           </div>
         </div>
         <!-- Right Content - Floating Cards -->
-        <div class="w-full lg:w-5/12 relative mt-10">
+        <div class="w-full lg:w-5/12 relative mt-20">
           <div class="grid grid-cols-2 gap-4 animate-float">
             <!-- Destination Cards -->
             <div class="space-y-4">
