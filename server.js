@@ -68,6 +68,35 @@ app.get('/api/places', async (req, res) => {
     }
 });
 
+// New endpoint for Unsplash image search
+app.get('/api/destination-images', async (req, res) => {
+    try {
+        const { query } = req.query;
+        if (!query) {
+            return res.status(400).json({ error: 'Query parameter is required' });
+        }
+
+        const response = await fetch(
+            `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&per_page=15`,
+            {
+                headers: {
+                    'Authorization': `Client-ID ${process.env.UNSPLASH_API_KEY}`
+                }
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error('Unsplash API request failed');
+        }
+
+        const data = await response.json();
+        res.json(data.results);
+    } catch (error) {
+        console.error('Error fetching images:', error);
+        res.status(500).json({ error: 'Failed to fetch images' });
+    }
+});
+
 //Google Maps endpoint
 app.get('/api/maps-key', (req, res) => {
     try {
