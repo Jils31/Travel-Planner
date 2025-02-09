@@ -1,114 +1,94 @@
 const express = require('express');
 const path = require('path');
-require('dotenv').config();
+const cors = require('cors');
+const dotenv = require('dotenv');
+const https = require('https');
+
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Enable CORS
+app.use(cors());
 
-app.use(express.static('public'));
+// Serve static files
+app.use(express.static(path.join(__dirname, 'public')));
 
-// Weather API endpoint
-app.get('/api/weather-key', (req, res) => {
-    try {
-        if (!process.env.WEATHER_API_KEY) {
-            throw new Error('Weather API key not configured');
-        }
-        res.json({ WEATHER_API_KEY: process.env.WEATHER_API_KEY });
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to retrieve API key' });
-    }
+// Helper function for HTTPS requests
+const makeHttpsRequest = (url) => {
+    return new Promise((resolve, reject) => {
+        https.get(url, (res) => {
+            let data = '';
+            res.on('data', (chunk) => (data += chunk));
+            res.on('end', () => resolve(JSON.parse(data)));
+            res.on('error', reject);
+        }).on('error', reject);
+    });
+};
+
+app.get("/favicon.ico", (req, res) => {
+    res.status(204).end(); // Respond with "No Content" to prevent errors
 });
 
-// Geocoding endpoint
+// API endpoints
+app.get('/api/weather-key', (req, res) => {
+    if (!process.env.WEATHER_API_KEY) {
+        return res.status(500).json({ error: 'Weather API key not configured' });
+    }
+    res.json({ WEATHER_API_KEY: process.env.WEATHER_API_KEY });
+});
+
 app.get('/api/geocode', async (req, res) => {
+    const { city } = req.query;
+    if (!city) return res.status(400).json({ error: 'City parameter is required' });
+
     try {
-        const { city } = req.query;
-        if (!city) {
-            return res.status(400).json({ error: 'City parameter is required' });
-        }
-
-        const response = await fetch(
-            `https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(city)}&format=json&apiKey=${process.env.GEOAPIFY_API_KEY}`
-        );
-
-        if (!response.ok) {
-            throw new Error('Geocoding request failed');
-        }
-
-        const data = await response.json();
+        const url = `https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(city)}&format=json&apiKey=${process.env.GEOAPIFY_API_KEY}`;
+        const data = await makeHttpsRequest(url);
         res.json(data);
     } catch (error) {
-        console.error('Geocoding error:', error);
+        console.error('Geocoding error:', error.message);
         res.status(500).json({ error: 'Failed to fetch geocoding data' });
     }
 });
 
-// Places endpoint
 app.get('/api/places', async (req, res) => {
+    const { lon, lat } = req.query;
+    if (!lon || !lat) return res.status(400).json({ error: 'Longitude and latitude are required' });
+
     try {
-        const { lon, lat } = req.query;
-        if (!lon || !lat) {
-            return res.status(400).json({ error: 'Longitude and latitude are required' });
-        }
-
-        const response = await fetch(
-            `https://api.geoapify.com/v2/places?categories=tourism.sights&filter=circle:${lon},${lat},50000&limit=6&sort=importance&apiKey=${process.env.GEOAPIFY_API_KEY}`
-        );
-
-        if (!response.ok) {
-            throw new Error('Places request failed');
-        }
-
-        const data = await response.json();
+        const url = `https://api.geoapify.com/v2/places?categories=tourism.sights&filter=circle:${lon},${lat},50000&limit=6&sort=importance&apiKey=${process.env.GEOAPIFY_API_KEY}`;
+        const data = await makeHttpsRequest(url);
         res.json(data);
     } catch (error) {
-        console.error('Places error:', error);
+        console.error('Places error:', error.message);
         res.status(500).json({ error: 'Failed to fetch places data' });
     }
 });
 
-// New endpoint for Unsplash image search
 app.get('/api/destination-images', async (req, res) => {
+    const { query } = req.query;
+    if (!query) return res.status(400).json({ error: 'Query parameter is required' });
+
     try {
-        const { query } = req.query;
-        if (!query) {
-            return res.status(400).json({ error: 'Query parameter is required' });
-        }
-
-        const response = await fetch(
-            `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&per_page=15`,
-            {
-                headers: {
-                    'Authorization': `Client-ID ${process.env.UNSPLASH_API_KEY}`
-                }
-            }
-        );
-
-        if (!response.ok) {
-            throw new Error('Unsplash API request failed');
-        }
-
-        const data = await response.json();
+        const url = `https://api.unsplash.com/search/photos?query=${encodeURIComponent(query)}&per_page=15&client_id=${process.env.UNSPLASH_API_KEY}`;
+        const data = await makeHttpsRequest(url);
         res.json(data.results);
     } catch (error) {
-        console.error('Error fetching images:', error);
+        console.error('Error fetching images:', error.message);
         res.status(500).json({ error: 'Failed to fetch images' });
     }
 });
 
-//Google Maps endpoint
 app.get('/api/maps-key', (req, res) => {
-    try {
-        if (!process.env.GOOGLE_MAPS_API_KEY) {
-            throw new Error('Google Maps API key not configured');
-        }
-        res.json({ apiKey: process.env.GOOGLE_MAPS_API_KEY });
-    } catch (error) {
-        res.status(500).json({ error: 'Failed to retrieve API key' });
+    if (!process.env.GOOGLE_MAPS_API_KEY) {
+        return res.status(500).json({ error: 'Google Maps API key not configured' });
     }
+    res.json({ apiKey: process.env.GOOGLE_MAPS_API_KEY });
 });
 
+// Start the server
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
 });
